@@ -104,7 +104,9 @@ DejiaGnu 是一种开源自动化测试框架。 是用expect脚本语言来设�
 	├── testsuite
 	├── texinfo.tex
 	└── TODO
-其中runtest 和 runtest.exp 是同样的意思，一个是用shell写的，一个是用expect写的
+其中runtest 和 runtest.exp 是同样的意思，一个是用shell写的，一个是用expect写的   
+
+> **runtest is the test driver for DejaGnu**, 相当gcc 和 c 之间的关系
 
 运行方式：
 1. make check  
@@ -119,6 +121,56 @@ DejiaGnu 是一种开源自动化测试框架。 是用expect脚本语言来设�
 * xxx.sum - 概要结果  
 * xxx.log - 详细日志，除了测试结果还有测试交互过程  
 
+#### 输出结果说明
+
+* PASS - 期望测试**成功** 实际测试**成功**  
+* XPASS - 期望测试**失败** 实际测试**成功**  
+* FAIL - 期望测试**成功** 实际测试**失败**  
+* XFAIL - 期望测试**失败** 实际测试**失败**   
+* UNRESOLVED - 测试程序有问题，还没有解决  
+* UNTESTED - 测试程序还没完成
+* UNSUPPORTED - 测试程序依赖某些特性，但这些特性还不支持  
+* ERROR - 测试程序自己发现的问题
+* WARNING - 表面潜在的问题   
+* NOTE - 关于测试程序的一些信息
+
+#### runtest 测试选项
+
+	USAGE: runtest [options...]
+	--all, -a		Print all test output to screen
+	--build [triplet]	The canonical triplet of the build machine
+	--debug			Set expect debugging ON
+	--directory name	Run only the tests in directory 'name'
+	--help			Print help text
+	--host [triplet]	The canonical triplet of the host machine
+	--host_board [name]	The host board to use
+	--ignore [name(s)]	The names of specific tests to ignore
+	--log_dialog		Emit Expect output on stdout
+	--mail [name(s)]	Whom to mail the results to
+	--objdir [name]		The test suite binary directory
+	--outdir [name]		The directory to put logs in
+	--reboot		Reboot the target (if supported)
+	--srcdir [name]		The test suite source code directory
+	--status		Set the exit status to fail on Tcl errors
+	--strace [number]	Turn on Expect tracing
+	--target [triplet]	The canonical triplet of the target board
+	--target_board [name(s)] The list of target boards to run tests on
+	--tool [name(s)]	Run tests on these tools
+	--tool_exec [name]	The path to the tool executable to test
+	--tool_opts [options]	A list of additional options to pass to the tool
+	--verbose, -v		Produce verbose output
+	--version, -V		Print all relevant version numbers
+	--xml, -x		Write out an XML results file
+	--D[0-1]		Tcl debugger
+	script.exp[=arg(s)]	Run these tests only
+
+#### 关键选项说明
+**--tool**  Specifies which testsuite to run, and what initialization module to use
+
+> 参考binutils     
+binutils 里面有 gas, objdump ...，如果我们要单独测是gas里面的testsuite 命令如下  
+
+	runtest --tool gas --srcdir path/binutils/gas/testsuite/
 
 >脚本语言没有main这样的函数，所以第一句就是开始
 
