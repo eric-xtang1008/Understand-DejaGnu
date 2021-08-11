@@ -104,7 +104,7 @@ DejiaGnu 是一种开源自动化测试框架。 是用expect脚本语言来设�
 	├── testsuite
 	├── texinfo.tex
 	└── TODO
-其中runtest 和 runtest.exp 是同样的意思，一个是用shell写的，一个是用expect写的   
+其中runtest是用shell脚本写的，用来启动 runtest.exp   
 
 > **runtest is the test driver for DejaGnu**, 相当gcc 和 c 之间的关系
 
