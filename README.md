@@ -64,6 +64,11 @@ or
 	send_user		用来打印输出 相当于shell中的echo
 	exit			退出expect脚本
 	set timeout		设置超时时间
+	strace			debug tcl
+
+expect manual
+
+http://www.tcl.tk/man/expect5.31/expect.1.html#lbAB
 
 ### DejaGnu
 DejiaGnu 是一种开源自动化测试框架。 是用expect脚本语言来设计的，可以理解为他是一种自定义Tcl程序库。所以DejiaGnu是用tcl语言写的。说的很抽象，我们可以直接下载代码看下：
